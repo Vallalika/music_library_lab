@@ -2,6 +2,7 @@ from db.run_sql import run_sql
 
 from models.artist import Artist
 from models.album import Album
+
 import repositories.artist_repository as artist_repository
 
 def save(album):
@@ -36,9 +37,27 @@ def select(id):
     album = None
     sql = "SELECT * FROM albums WHERE id = %s"
     values = [id]
-    result = run_sql(sql, values)[0]
+    results = run_sql(sql, values)
 
-    if result is not None:
+    # Previously WRONG in the lesson - this creates an error if we use an ID that doesn't exist
+    # result = run_sql(sql,values)[0]
+
+    if results:
+        result = results[0]
         artist = artist_repository.select(result['artist_id'])
         album = Album(result['title'], result['genre'], artist, result['id'] )
     return album
+
+### EXTENSIONS
+
+def select_all_by_artist(artist):
+    albums = []
+    sql = "SELECT * FROM albums WHERE artist_id = %s"
+    values = [artist.id]
+    results = run_sql(sql, values)
+
+    for result in results:
+        album = Album(result['title'], result['genre'], artist, result['id'])
+        albums.append(album)
+    
+    return albums
