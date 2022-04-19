@@ -5,18 +5,48 @@ from models.artist import Artist
 import repositories.album_repository as album_repository
 import repositories.artist_repository as artist_repository
 
-# task_repository.delete_all()
-# user_repository.delete_all()
+album_repository.delete_all()
+artist_repository.delete_all()
 
-# user1 = User("Jack", "Jarvis")
-# user_repository.save(user1)
-# user2 = User("Victor", "McDade")
-# user_repository.save(user2)
+artist1 = Artist("Michael Jackson")
+artist_repository.save(artist1)
+
+album1 = Album("Ghosts", "Pop", artist1)
+album_repository.save(album1)
+
+album2 = Album("Thriller", "Pop", artist1)
+album_repository.save(album2)
 
 
-# task = Task("Walk Dog", user1, 60)
-# task_repository.save(task)
 
-# user_repository.select_all()
+# artist_repository.select(artist1.id)
+
+# TEST for artist by id
+# artist_by_id = artist_repository.select(artist1.id)
+# print(artist_by_id.__dict__)
+
+# TEST for select all artists
+# artists_list = artist_repository.select_all()
+
+# for artist in artists_list:
+#     print(artist.__dict__)
+
+# TEST for select all albums
+# album_list = album_repository.select_all()
+
+# for album in album_list:
+#     print(album.__dict__)
+#     print(album.artist.__dict__)
+
+# TEST for album by id
+album_by_id = album_repository.select(album1.id)
+print(album_by_id.__dict__)
+print(album_by_id.artist.__dict__)
+
+# TEST for delete
+# album_repository.delete(2)
+
+# print(artist1.__dict__)
+# print(album1.__dict__)
 
 # pdb.set_trace()
