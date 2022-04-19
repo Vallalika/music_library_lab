@@ -1,9 +1,9 @@
 import pdb
-# from models.task import Task
-# from models.user import User
+from models.album import Album
+from models.artist import Artist
 
-# import repositories.task_repository as task_repository
-# import repositories.user_repository as user_repository
+import repositories.album_repository as album_repository
+import repositories.artist_repository as artist_repository
 
 # task_repository.delete_all()
 # user_repository.delete_all()
@@ -19,4 +19,4 @@ import pdb
 
 # user_repository.select_all()
 
-pdb.set_trace()
+# pdb.set_trace()
