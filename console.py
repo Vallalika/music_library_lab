@@ -14,16 +14,19 @@ artist_repository.save(artist1)
 artist2 = Artist("Nightwish")
 artist_repository.save(artist2)
 
-album1 = Album("Ghost", "Pip", artist2)
+album1 = Album("Ghosts", "Pop", artist1)
 album_repository.save(album1)
 
 album2 = Album("Thriller", "Pop", artist1)
 album_repository.save(album2)
 
-album1.title = "Ghosts"
-album1.genre = "Pop"
-album1.artist = artist1
-album_repository.update(album1)
+artist_repository.delete(artist2)
+album_repository.delete(album1)
+
+# album1.title = "Ghosts"
+# album1.genre = "Pop"
+# album1.artist = artist1
+# album_repository.update(album1)
 
 
 # artist_repository.select(artist1.id)
